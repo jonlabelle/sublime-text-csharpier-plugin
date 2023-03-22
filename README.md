@@ -24,7 +24,9 @@ To install csharpier: `dotnet tool install csharpier -g`.
 
 ### Package Control
 
-Hopefully soon: in [@wbond's Package Control][package-control].  From the command menu (default `ctrl-shift-p`) choose `Package Control: Install Package`, search for `csharpier`.
+Hopefully soon: in [@wbond's Package Control][package-control]. Until then, open the command menu (default `ctrl-shift-p`), choose `Package Control: Add Repository` and paste in the repo URL: `https://github.com/mkonstapel/sublime-text-csharpier-plugin`.
+
+To install the package, choose `Package Control: Install Package` from the command menu and search for `csharpier`.
 
 ### Manual package installation
 
@@ -50,6 +52,8 @@ $ git clone https://github.com/mkonstapel/sublime-text-csharpier-plugin
 $ cd "%APPDATA%\Sublime Text\Packages"
 $ git clone https://github.com/mkonstapel/sublime-text-csharpier-plugin
 ```
+
+NOTE: if you install the package manually, but you also use Package Control, delete the `sublime-text-csharpier-plugin/package-metadata.json` file. Otherwise, Package Control will think it's an "orphaned" package (on disk, but not requested by you) and will delete it the next time you start Sublime Text.
 
 [csharpier]: https://csharpier.com
 [package-control]: https://packagecontrol.io/
