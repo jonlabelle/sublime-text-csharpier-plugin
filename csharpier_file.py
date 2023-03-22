@@ -1,11 +1,17 @@
+import logging
 import os
-import subprocess
 import shutil
+import sys
+import subprocess
 
 import sublime
 import sublime_plugin
 
 DEFAULT_FORMAT_ON_SAVE = False
+
+STATUS_KEY = "charpier"
+
+log = logging.getLogger("csharpier")
 
 
 def is_csharp(view):
@@ -19,13 +25,34 @@ class CsharpierCommand(sublime_plugin.TextCommand):
     is_visible = is_enabled
 
     def format(self, edit):
+        filename = self.view.file_name()
         cmd = shutil.which("dotnet-csharpier")
         if cmd is None:
             cmd = os.path.expanduser("~/.dotnet/tools/dotnet-csharpier")
-            print("dotnet-csharpier not found on PATH, trying " + cmd)
+            log.warning("CSharpier: dotnet-csharpier not found on PATH, trying %s", cmd)
 
-        print("running " + cmd + " " + self.view.file_name())
-        subprocess.check_call([cmd, self.view.file_name()])
+        log.info("CSharpier: running %s %s", cmd, filename)
+        _, stderr = subprocess.Popen(
+            [cmd, filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        ).communicate()
+        stderr = stderr.decode(sys.getdefaultencoding())
+        if stderr:
+            # a typical error message:
+            # Error path/to/File.cs - Failed to compile so was not formatted.
+            # (165,13): error CS1002: ; expected
+            log.error("CSharpier: error from subprocess")
+            log.error("\n" + stderr)
+            error = " ".join(stderr.splitlines())
+            
+            # compactify the status bar output a bit
+            error = error.replace(filename, os.path.basename(filename))
+            if error.startswith("Error "):
+                error = error[6:]
+
+            self.view.set_status(STATUS_KEY, "CSharpier: " + error)
+            sublime.set_timeout(lambda: self.view.erase_status(STATUS_KEY), 10000)
+        else:
+            self.view.erase_status(STATUS_KEY)
 
     def run(self, edit):
         self.format(edit)
