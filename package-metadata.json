@@ -4,7 +4,7 @@
         "*"
     ],
     "url": "https://github.com/mkonstapel/sublime-text-csharpier-plugin",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "sublime_text": "*",
     "description": "Runs csharpier on your C# source files (https://csharpier.com)"
 }
