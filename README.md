@@ -53,8 +53,6 @@ $ cd "%APPDATA%\Sublime Text\Packages"
 $ git clone https://github.com/mkonstapel/sublime-text-csharpier-plugin
 ```
 
-NOTE: if you install the package manually, but you also use Package Control, delete the `sublime-text-csharpier-plugin/package-metadata.json` file. Otherwise, Package Control will think it's an "orphaned" package (on disk, but not requested by you) and will delete it the next time you start Sublime Text.
-
 [csharpier]: https://csharpier.com
 [package-control]: https://packagecontrol.io/
 [isort-plugin]: https://github.com/thijsdezoete/sublime-text-isort-plugin
