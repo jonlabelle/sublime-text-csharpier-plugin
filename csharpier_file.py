@@ -7,8 +7,6 @@ import subprocess
 import sublime
 import sublime_plugin
 
-DEFAULT_FORMAT_ON_SAVE = False
-
 STATUS_KEY = "charpier"
 
 log = logging.getLogger("csharpier")
@@ -43,7 +41,7 @@ class CsharpierCommand(sublime_plugin.TextCommand):
             log.error("CSharpier: error from subprocess")
             log.error("\n" + stderr)
             error = " ".join(stderr.splitlines())
-            
+
             # compactify the status bar output a bit
             error = error.replace(filename, os.path.basename(filename))
             if error.startswith("Error "):
@@ -60,9 +58,6 @@ class CsharpierCommand(sublime_plugin.TextCommand):
 
 class CsharpierOnSave(sublime_plugin.ViewEventListener):
     def on_post_save(self):
-        settings = self.view.settings() or {}
-        format_on_save = settings.get("csharpier.format_on_save")
-        if format_on_save is None:
-            format_on_save = DEFAULT_FORMAT_ON_SAVE
-        if format_on_save:
+        settings = sublime.load_settings("CSharpier.sublime-settings")
+        if settings.get("format_on_save", False):
             self.view.run_command("csharpier")
