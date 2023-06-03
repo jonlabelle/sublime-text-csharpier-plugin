@@ -5,10 +5,10 @@ Small plugin that adds a command to run `dotnet-csharpier` on C# files.
 
 [CSharpier][csharpier] is an opinionated code formatter for C#.
 
-You can invoke the formatter manually from the command menu, "CSharpier: format file". You can also configure the plugin to run automatically on save by editing your user/project settings to include:
+You can invoke the formatter manually from the command menu, "CSharpier: format file". You can also configure the plugin to run automatically on save by editing the package settings (Preferences/Package Settings/CSharpier):
 
     {
-        "csharpier.format_on_save": true,
+        "format_on_save": true,
     }
 
 Note that the command is only visible, and runs on save, when used on C# files.
