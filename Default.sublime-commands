@@ -1,5 +1,13 @@
 [
     {
+        "caption": "Preferences: CSharpier Settings",
+        "command": "edit_settings",
+        "args": {
+            "base_file": "${packages}/CSharpier/CSharpier.sublime-settings",
+            "default": "// CSharpier Settings - User\n{\n\t$0\n}\n",
+        }
+    },
+    {
         "caption": "CSharpier: format file",
         "command": "csharpier"
     }
