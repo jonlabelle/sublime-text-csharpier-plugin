@@ -1,0 +1,20 @@
+[
+	{
+		"caption": "CSharpier: Format file",
+		"command": "csharpier"
+	},
+	{
+		"caption": "Preferences: CSharpier Settings - Default",
+		"command": "open_file",
+		"args": {
+			"file": "${packages}/CSharpier/CSharpier.sublime-settings"
+		}
+	},
+	{
+		"caption": "Preferences: CSharpier Settings - User",
+		"command": "open_file",
+		"args": {
+			"file": "${packages}/User/CSharpier.sublime-settings"
+		}
+	}
+]

@@ -1,28 +1,38 @@
 [
-    {
-        "id": "preferences",
-        "children":
-        [
-            {
-                "id": "package-settings",
-                "children":
-                [
-                    {
-                        "caption": "CSharpier",
-                        "children":
-                        [
-                            {
-                                "caption": "Settings",
-                                "command": "edit_settings",
-                                "args": {
-                                    "base_file": "${packages}/CSharpier/CSharpier.sublime-settings",
-                                    "default": "// CSharpier Settings - User\n{\n\t$0\n}\n",
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
+	{
+		"caption": "Preferences",
+		"mnemonic": "n",
+		"id": "preferences",
+		"children": [
+			{
+				"caption": "Package Settings",
+				"mnemonic": "P",
+				"id": "package-settings",
+				"children": [
+					{
+						"caption": "CSharpier",
+						"children": [
+							{
+								"caption": "Settings – Default",
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/CSharpier/CSharpier.sublime-settings"
+								}
+							},
+							{
+								"caption": "Settings – User",
+								"command": "open_file",
+								"args": {
+									"file": "${packages}/User/CSharpier.sublime-settings"
+								}
+							},
+							{
+								"caption": "-"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
 ]

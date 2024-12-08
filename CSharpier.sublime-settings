@@ -1,3 +1,10 @@
 {
-	"format_on_save": false
+	// Format C# files on save
+	"format_on_save": false,
+
+	// Path to the dotnet-csharpier executable
+	"csharpier_path": "~/.dotnet/tools/dotnet-csharpier",
+
+	// The log level to use when running the formatter
+	"log_level": "WARNING" // Acceptable values: "debug", "info", "warning", "error", "critical"
 }
